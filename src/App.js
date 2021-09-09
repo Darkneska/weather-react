@@ -8,6 +8,7 @@ function App() {
       <header>Weather App</header>
       <Search />
       <footer>
+        <a href="https://github.com/Darkneska/weather-react"> </a>
       </footer>
     </div>
   );
