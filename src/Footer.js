@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <small className="link">
       <a
-        href="https://github.com/Jolusegun/simple-weather-react"
+        href="https://github.com/Darkneska/weather-react"
         target="_blank"
         rel="noreferrer"
         className="source"
@@ -14,7 +14,7 @@ export default function Footer() {
       </a>{" "}
       by Denisa Pavlik{" "}
       <a
-        href="https://heuristic-hugle-66f126.netlify.app/"
+        href="https://confident-kalam-ccc5df.netlify.app/"
         target="_blank"
         rel="noreferrer"
         className="source"
