@@ -12,7 +12,7 @@ export default function Footer() {
       >
         Open-sourced on GitHub
       </a>{" "}
-      by Denisa Pavlik{" "}
+      by Denisa Pavlikova{" "}
       <a
         href="https://confident-kalam-ccc5df.netlify.app/"
         target="_blank"

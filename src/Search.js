@@ -1,57 +1,67 @@
 import React, { useState } from "react";
+import WeatherInfo from "./WeatherInfo";
+
 import axios from "axios";
+import './Search.css';
 
+export default function Search(props){
+    const [weatherData, setWeatherData] = useState({ready: false});
+    const [city, setCity] = useState(props.defaultCity);
+    function handleResponse(response){
+        console.log(response.data);
+        setWeatherData({
+            ready: true,
+            temperature: response.data.main.temp,
+            humidity: response.data.main.humidity,
+            date: new Date(response.data.dt * 1000),
+            description: response.data.weather[0].description,
+            iconUrl: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+            wind: response.data.wind.speed,
+            city: response.data.name
+        });
+    }
+function search(){
+    const apiKEY ="af87a624e39d4b2fea09075a0839db55";
+    let apiURL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKEY}&units=metric`;
+    axios.get(apiURL).then(handleResponse);
 
-export default function Search() {
-  let [city, setCity] = useState("");
-  let [loaded, setLoaded] = useState(false);
-  let [weather, setWeather] = useState({});
+}
 
-  function showWeather(response) {
-    setLoaded(true);
-    setWeather({
-      temperature: response.data.main.temp,
-      wind: response.data.wind.speed,
-      humidity: response.data.main.humidity,
-      icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
-      description: response.data.weather[0].description
-    });
-  }
+    function handleSubmit(event) {
+            event.preventDefault();
+            search(city);
+        }
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    let apiKey = "af87a624e39d4b2fea09075a0839db55";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(showWeather);
-  }
+    function handleCityChange(event) {
+            setCity(event.target.value);
 
-  function updateCity(event) {
-    setCity(event.target.value);
-  }
-
-  let form = (
-    <form onSubmit={handleSubmit}>
-      <input type="search" placeholder="Enter a city.." onChange={updateCity} />
-      <button type="Submit">Search</button>
-    </form>
-  );
-
-  if (loaded) {
+        }
+    
+    if (weatherData.ready) {
     return (
-      <div>
-        {form}
-        <ul>
-          <li>Temperature: {weather.temperature}°C</li>
-          <li>Description: {weather.description}</li>
-          <li>Humidity: {weather.humidity}%</li>
-          <li>Wind Speed: {weather.wind}km/h</li>
-          <li>
-            <img src={weather.icon} alt={weather.description} />
-          </li>
-        </ul>
-      </div>
+        <div className="Search">
+            <form onSubmit={handleSubmit}> 
+                <div className="row">
+                 <div className="col-9">
+                <input type="search" 
+                        placeholder="Enter a city.." 
+                        className="form-control"
+                        autoFocus="on"
+                        onChange={handleCityChange}
+                        />
+                        </div>
+                        <div className="col-3">
+            <input type="submit" value="Search" className="btn 
+            btn-primary"/>
+            </div>
+            </div>
+            </form>
+            <WeatherInfo data={weatherData}/>
+            </div>
     );
-  } else {
-    return form;
+}   else {
+    search();
+     return(null)
+      ;
   }
 }

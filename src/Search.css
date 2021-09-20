@@ -1,0 +1,43 @@
+.Search {
+    border: 1px solid rgb(247, 0, 255);
+    padding: 16px;
+    margin: 30px;
+    max-width: 600px;
+    border-radius: 4px;
+   
+}
+.Search form {
+    margin-bottom: 30px;
+}
+.Search h1 {
+    font-size: 24px;
+    font-weight: 100;
+    margin: 20px 0 0 0;
+    line-height: 29px;
+    color: rgb(247, 0, 255);
+    font-weight: bold;
+}
+.Search ul{
+    margin: 0;
+    padding: 0;
+}
+.Search li{
+    font-size: 16px;
+    line-height: 19px;
+    list-style: none;
+}
+.Search img{
+    height: 64px;
+    display: inline-block;
+}
+.Search .temperature{
+    font-weight: bold;
+    font-size: 64px;
+    color: grey;
+    
+}
+.Search .unit{
+    color:grey;
+    font-size: 16px;
+    position: relative;
+}
