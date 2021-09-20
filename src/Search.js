@@ -61,7 +61,8 @@ function search(){
     );
 }   else {
     search();
-     return(null)
+     return(
+       "Loading...")
       ;
   }
 }
