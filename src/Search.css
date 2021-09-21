@@ -1,9 +1,10 @@
 .Search {
-    border: 1px solid rgb(247, 0, 255);
+    border: 2px solid #CCA43D;
     padding: 16px;
     margin: 30px;
     max-width: 600px;
     border-radius: 4px;
+    background-color: #101046;
    
 }
 .Search form {
@@ -14,7 +15,7 @@
     font-weight: 100;
     margin: 20px 0 0 0;
     line-height: 29px;
-    color: rgb(247, 0, 255);
+    color: #CCA43D;
     font-weight: bold;
 }
 .Search ul{
@@ -25,19 +26,26 @@
     font-size: 16px;
     line-height: 19px;
     list-style: none;
+    color: rgba(255, 255, 255, 0.692);
 }
-.Search img{
-    height: 64px;
+.Search canvas{
+    height: 36px;
     display: inline-block;
+    
+    
+    
 }
 .Search .temperature{
     font-weight: bold;
     font-size: 64px;
-    color: grey;
+    color: #CCA43D;
     
 }
 .Search .unit{
     color:grey;
     font-size: 16px;
     position: relative;
+}
+.Search:btn btn-primary{
+    background-color: #CCA43D; 
 }

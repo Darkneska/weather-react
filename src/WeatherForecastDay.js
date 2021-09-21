@@ -2,6 +2,7 @@ import React from "react";
 import WeatherIcon from "./WeatherIcon";
 
 
+
 export default function WeatherForecastDay(props){
     function maxTemperature(){
         let temperature = Math.round(props.data.temp.max);
