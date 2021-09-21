@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import WeatherInfo from "./WeatherInfo";
-
+import WeatherForecast from "./WeatherForecast";
 import axios from "axios";
 import './Search.css';
 
@@ -11,11 +11,12 @@ export default function Search(props){
         console.log(response.data);
         setWeatherData({
             ready: true,
+            coordinates: response.data.coord,
             temperature: response.data.main.temp,
             humidity: response.data.main.humidity,
             date: new Date(response.data.dt * 1000),
             description: response.data.weather[0].description,
-            iconUrl: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+            icon: response.data.weather[0].icon,
             wind: response.data.wind.speed,
             city: response.data.name
         });
@@ -57,6 +58,7 @@ function search(){
             </div>
             </form>
             <WeatherInfo data={weatherData}/>
+            <WeatherForecast coordinates={weatherData.coordinates}/>
             </div>
     );
 }   else {
