@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import WeatherInfo from "./WeatherInfo";
 import WeatherForecast from "./WeatherForecast";
+import Loader from "react-loader-spinner";
 import axios from "axios";
 import './Search.css';
 
@@ -63,8 +64,15 @@ function search(){
     );
 }   else {
     search();
-     return(
-       "Loading...")
-      ;
+    return (
+      <Loader
+        type="ThreeDots"
+        color="#00BFFF"
+        height={100}
+        width={100}
+        timeout={3000} //3 secs
+      />
+    );
+    ;
   }
 }
